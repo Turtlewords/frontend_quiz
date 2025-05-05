@@ -3,22 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Frontend Development quiz covering HTML, CSS, JavaScript and accessibility">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="styles.css">
   <title>Frontend Mentor | Frontend quiz app</title>
 </head>
 <body>
-
+  <header>
+    <div id="toggle-mode-container">
+      <img src="assets/images/icon-sun-dark.svg" alt="the sun">
+      <label class="switch">
+        <input type="checkbox">
+        <span class="slider round"></span>
+      </label>
+      <img src="assets/images/icon-moon-dark.svg" alt="the moon">
+    </div>
+  </header>
+  
+  
   <!-- Quiz menu start -->
 
-  Welcome to the Frontend Quiz!
-  Pick a subject to get started.
+   <main>
+    <div id="hero">
+      <h1><span id="header-top">Welcome to the</span><span id="header-bottom">Frontend Quiz!</span></h1>
+      <p>Pick a subject to get started.</p>
+    </div>
+    <div id="main-menu">
+      <div class="subject">
+        <img src="assets/images/icon-html.svg" alt="html icon">
+        <h2>HTML</h2>
+      </div>
 
-  HTML
-  CSS
-  JavaScript
-  Accessibility
+      <div class="subject">
+        <img src="assets/images/icon-css.svg" alt="css icon">
+        <h2>CSS</h2>
+      </div>
+
+      <div class="subject">
+        <img src="assets/images/icon-js.svg" alt="JavaScript icon">
+        <h2>JavaScript</h2>
+      </div>
+
+      <div class="subject">
+        <img src="assets/images/icon-accessibility.svg" alt="accessibility icon">
+        <h2>Accessibility</h2>
+      </div>
+    </div>
+  </main>
 
   <!-- Quiz menu end -->
 
