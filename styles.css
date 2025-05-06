@@ -142,7 +142,8 @@ main {
 
   header {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
     height: 72px;
   }
@@ -176,6 +177,19 @@ main {
     width: 300px
   }
 
+  .subject:hover {
+    cursor: pointer;
+    box-shadow: rgba(48, 106, 255, 0.25) 2px 2px 5px 2px, rgba(48, 106, 255, 0.25) 2px 2px 3px 2px;
+  }
+
+  .subject-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+ 
+
   /* Typography */
 
   h1 {
@@ -196,7 +210,7 @@ main {
     font-weight: 400;
   }
 
-  .subject h2 {
+ h2 {
     margin: 0;
     font-weight: 500;
     font-size: 20px;
@@ -208,24 +222,26 @@ main {
     max-width: 100%;
   }
 
-  .subject img {
+  .subject img, .subject-header img {
     border-radius: 8px;
     padding: 5px;
   }
 
-  #html-item img {
+  #html-subject img, #html-header img {
     background-color: var(--orange-50);
   }
 
-  #css-item img {
+
+
+  #css-subject img {
     background-color: var(--green-100);
   }
 
-  #js-item img {
+  #js-subject img {
     background-color: var(--blue-100);
   }
 
-  #access-item img {
+  #access-subject img {
     background-color: var(--purple-100);
   }
 
