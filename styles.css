@@ -216,6 +216,11 @@ main {
     font-size: 20px;
   }
 
+  progress {
+    width: 200px;
+    accent-color: var(--purple-600);
+  }
+
   /* Images */
 
   img {
