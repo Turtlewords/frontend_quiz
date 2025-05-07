@@ -10,6 +10,20 @@ htmlSubject.addEventListener("click", () => {
 })
 
 
+const fetchData = async () => {
+    try { 
+        const response = await fetch("data.json");
+        if (!response.ok) {
+            throw new Error("HTTP error: " + response.status);
+        }
+        const data = await response.json()
+        return data;
+    } catch(error) {
+        alert(error)
+    }
+}
+
+
 function initializeHTML() {
     main.style.display = "none";
     subjectHeader.innerHTML = 
@@ -18,3 +32,17 @@ function initializeHTML() {
         <h2>HTML</h2>
     </div>`
 }
+
+async function displayData() {
+    let data = await fetchData();
+    data= data.quizzes;
+    data.forEach((subject) => {
+        console.log(subject.title);
+    })
+
+    // data.forEach((subject) => {
+    //     console.log(subject)
+    // })
+}
+
+displayData();
