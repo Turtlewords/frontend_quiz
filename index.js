@@ -6,8 +6,15 @@ const accessSubject = document.querySelector("#access-subject");
 const subjectHeader = document.querySelector("#subject-header")
 const submitBtn = document.querySelector("#submit-btn");
 
+const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+
+
+
+console.log("Boxes: " + checkBoxes.length);
+
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
+    
 })
 
 htmlSubject.addEventListener("click", () => {

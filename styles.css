@@ -196,13 +196,15 @@ main {
     gap: 1rem;
   }
 
-  
-
-  input[type="checkbox"] {
-    display:none;
+  .select-answer {
+    border: 2px solid var(--purple-600);
   }
 
-  input[type="checkbox"]:checked {
+  input[type="radio"] {
+    visibility: hidden;
+  }
+
+  input[type="radio"]:checked {
     border: 2px solid var(--purple-600);
   }
 
@@ -228,7 +230,7 @@ main {
     outline: 2px solid var(--purple-600);
   }
 
-  in
+  
 
   .question-icon {
     background-color: var(--grey-50);
