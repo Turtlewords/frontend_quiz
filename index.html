@@ -60,31 +60,32 @@
       <p class="question-num">Question <span id="current-question"></span> of <span id="total-questions"></span></p>
       <p class="question"></p>
       <progress id="quiz-progress" value="1" max="10"></progress>
-      <div id="answers">
+      <form id="answers">
         <label for="answer-a" class="lbl-btn">
           <span class="question-icon">A</span>
-          <input id="answer-a" type="checkbox" value="">
+          <input id="answer-a" type="checkbox" >
           <span class="answer"></span>
         </label>
 
         <label for="answer-b" class="lbl-btn">
           <span class="question-icon">B</span>
-          <input id="answer-b" type="checkbox" value="">
+          <input id="answer-b" type="checkbox" >
           <span class="answer"></span>
         </label>
 
         <label for="answer-c" class="lbl-btn">
           <span class="question-icon">C</span>
-          <input id="answer-c" type="checkbox" value="">
+          <input id="answer-c" type="checkbox" >
           <span class="answer"></span>
         </label>
 
         <label for="answer-d" class="lbl-btn">
           <span class="question-icon">D</span>
-          <input id="answer-d" type="checkbox" value="">
+          <input id="answer-d" type="checkbox" >
           <span class="answer"></span>
         </label>
-      </div>
+        <input type="submit" value="Submit Answer" id="submit-btn">
+      </form>
 
     </section>
 

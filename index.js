@@ -4,6 +4,11 @@ const cssSubject = document.querySelector("#css-subject");
 const jsSubject = document.querySelector("#js-subject");
 const accessSubject = document.querySelector("#access-subject");
 const subjectHeader = document.querySelector("#subject-header")
+const submitBtn = document.querySelector("#submit-btn");
+
+submitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+})
 
 htmlSubject.addEventListener("click", () => {
     initializeHTML()
