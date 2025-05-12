@@ -13,7 +13,7 @@ const totalQuestions = document.querySelector("#total-questions");
 const answerCount = document.querySelectorAll('input[type="radio"]');
 const answers = document.querySelectorAll(".answer");
 
-
+let score = 0;
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -24,6 +24,17 @@ htmlSubject.addEventListener("click", () => {
     startGame(0);
 })
 
+cssSubject.addEventListener("click", () => {
+    startGame(1);
+})
+
+jsSubject.addEventListener("click", () => {
+    startGame(2);
+})
+
+accessSubject.addEventListener("click", () => {
+    startGame(3);
+})
 
 const fetchData = async () => {
     try { 
