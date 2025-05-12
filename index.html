@@ -11,7 +11,7 @@
 <body>
   <header>
     <div id="subject-header">
-
+      
     </div>
     <div id="toggle-mode-container">
       <img src="assets/images/icon-sun-dark.svg" alt="the sun">
@@ -58,7 +58,7 @@
     <!-- Quiz question start -->
     <section id="question-container">
       <p class="question-num">Question <span id="current-question"></span> of <span id="total-questions"></span></p>
-      <p class="question"></p>
+      <p id="question"></p>
       <progress id="quiz-progress" value="1" max="10"></progress>
       <form id="answers">
         <label for="answer-a" class="lbl-btn">
@@ -86,7 +86,11 @@
         </label>
         <input type="submit" value="Submit Answer" id="submit-btn">
       </form>
-
+      <div id="no-answer">
+        <img src="assets/images/icon-error.svg" alt="error symbol">
+        <p>Please select an answer</p>
+      </div>
+      
     </section>
 
   </div>
