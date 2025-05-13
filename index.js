@@ -5,34 +5,60 @@ const jsSubject = document.querySelector("#js-subject");
 const accessSubject = document.querySelector("#access-subject");
 const subjectHeader = document.querySelector("#subject-header")
 const submitBtn = document.querySelector("#submit-btn");
+const nextBtn = document.querySelector("#next-btn");
 const noAnswer = document.querySelector("#no-answer");
 const questionEl = document.querySelector("#question")
 const currentQuestion = document.querySelector("#current-question");
 const totalQuestions = document.querySelector("#total-questions");
 
-const answerCount = document.querySelectorAll('input[type="radio"]');
+const radios = document.querySelectorAll('input[type="radio"]');
 const answers = document.querySelectorAll(".answer");
 
 let score = 0;
+let globalQuestionIndex = 0;
+let subjectIndex;
+
+radios.forEach((radio) => {
+    radio.addEventListener("change", () => {
+        noAnswer.style.display = "none"
+    })
+})
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    noAnswerSelected()
+    
+    checkAnswer(subjectIndex, globalQuestionIndex);
+    noAnswerSelected();
+
+})
+
+nextBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    displayQuestion(subjectIndex, globalQuestionIndex);
+    console.log("Subject index: " + subjectIndex);
+    console.log("Question index: " + globalQuestionIndex);
+    console.log("Score: " + score);
+    submitBtn.style.display = "block";
+    nextBtn.style.display = "none";
 })
 
 htmlSubject.addEventListener("click", () => {
+    subjectIndex = 0;
     startGame(0);
 })
 
 cssSubject.addEventListener("click", () => {
+    subjectIndex = 1;
     startGame(1);
 })
 
 jsSubject.addEventListener("click", () => {
+    subjectIndex = 2;
     startGame(2);
 })
 
 accessSubject.addEventListener("click", () => {
+    subjectIndex = 3;
     startGame(3);
 })
 
@@ -50,7 +76,7 @@ const fetchData = async () => {
 }
 
 function noAnswerSelected() {
-    for (let x of answerCount) {
+    for (let x of radios) {
         if (x.checked) {
             return true;
         } else {
@@ -75,7 +101,7 @@ async function startGame(subjectIndex) {
     let data = await fetchData();
     data = data.quizzes;
 
-    let index = 0;
+    
 
     main.style.display = "none";
     subjectHeader.innerHTML = 
@@ -84,7 +110,7 @@ async function startGame(subjectIndex) {
         <h2>${data[subjectIndex].title}</h2>
     </div>`
 
-    displayQuestion(subjectIndex, index);
+    displayQuestion(subjectIndex, globalQuestionIndex);
 
 }
 
@@ -109,6 +135,7 @@ async function displayOptions(subjectIndex, questionIndex) {
 
     for (let i = 0; i < len; i++) {
         answers[i].textContent = data[subjectIndex].questions[questionIndex].options[i];
+        radios[i].value = data[subjectIndex].questions[questionIndex].options[i];
     }
 }
 
@@ -123,4 +150,33 @@ async function displayData() {
     
 }
 
-// displayData();
+// finish check answer function
+
+async function checkAnswer(subjectIndex, questionIndex) {
+    let data = await fetchData();
+    data = data.quizzes;
+    globalQuestionIndex++;
+    let val = document.querySelector('input[type="radio"]:checked').value;
+    if (val == data[subjectIndex].questions[questionIndex].answer) {
+        alert("Correct!");
+        score++;
+        
+    } else {
+        alert("Incorrect!");
+    }
+    submitBtn.style.display = "none";
+    nextBtn.style.display = "block";
+    
+}
+
+
+
+function gameOver() {
+
+}
+
+function resetGame() {
+
+}
+
+displayData();

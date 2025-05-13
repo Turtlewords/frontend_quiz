@@ -252,7 +252,7 @@ main {
     justify-content: center;
   }
 
-  #submit-btn {
+  #submit-btn, #next-btn {
     font-family: "Rubik";
     font-weight: 400;
     font-size: 18px;
@@ -263,7 +263,7 @@ main {
     color: white;
   }
 
-  #submit-btn:hover {
+  #submit-btn:hover, #next-btn:hover {
     cursor: pointer;
     opacity: 0.7;
   }
