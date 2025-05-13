@@ -201,12 +201,23 @@ main {
   }
 
   input[type="radio"] {
-    visibility: hidden;
+    display:none;
   }
 
-  input[type="radio"]:checked {
-    border: 2px solid var(--purple-600);
+  .radio-container label {
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: .75rem;
+    display: flex;
+    align-items: center;
+    background-color: white;
   }
+
+  .radio-container input[type="radio"]:checked+label {
+  border: 2px solid var(--purple-600);
+}
+
 
   
 
@@ -223,7 +234,7 @@ main {
     padding: .75rem;
     display: flex;
     align-items: center;
-    background-color: white;
+    gap: 1rem;
   }
 
   .lbl-btn:active, .lbl-btn:hover {

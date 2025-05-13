@@ -120,9 +120,7 @@ async function displayData() {
         console.log(subject.title);
     })
 
-    // data.forEach((subject) => {
-    //     console.log(subject)
-    // })
+    
 }
 
-displayData();
+// displayData();

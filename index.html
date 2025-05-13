@@ -61,29 +61,37 @@
       <p id="question"></p>
       <progress id="quiz-progress" value="1" max="10"></progress>
       <form id="answers">
-        <label for="answer-a" class="lbl-btn">
-          <span class="question-icon">A</span>
-          <input id="answer-a" type="radio">
-          <span class="answer"></span>
-        </label>
+        <div class="radio-container">  
+          <input id="answer-a" name="options" type="radio">
+          <label for="answer-a" class="lbl-btn">
+            <span class="question-icon">A</span>
+            <span class="answer"></span>
+          </label>
+        </div>
 
-        <label for="answer-b" class="lbl-btn">
-          <span class="question-icon">B</span>
-          <input id="answer-b" type="radio" >
-          <span class="answer"></span>
-        </label>
+        <div class="radio-container">
+          <input id="answer-b" name="options" type="radio">
+          <label for="answer-b" class="lbl-btn">
+            <span class="question-icon">B</span>
+            <span class="answer"></span>
+          </label>
+        </div>
 
-        <label for="answer-c" class="lbl-btn">
-          <span class="question-icon">C</span>
-          <input id="answer-c" type="radio" >
-          <span class="answer"></span>
-        </label>
+        <div class="radio-container">
+          <input id="answer-c" name="options" type="radio">
+          <label for="answer-c" class="lbl-btn">
+            <span class="question-icon">C</span>
+            <span class="answer"></span>
+          </label>
+        </div>
 
-        <label for="answer-d" class="lbl-btn">
-          <span class="question-icon">D</span>
-          <input id="answer-d" type="radio" >
-          <span class="answer"></span>
-        </label>
+        <div class="radio-container">
+          <input id="answer-d" name="options" type="radio">
+          <label for="answer-d" class="lbl-btn">
+            <span class="question-icon">D</span>
+            <span class="answer"></span>
+          </label>
+        </div>
         <input type="submit" value="Submit Answer" id="submit-btn">
       </form>
       <div id="no-answer">
