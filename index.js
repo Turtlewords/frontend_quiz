@@ -8,8 +8,14 @@ const submitBtn = document.querySelector("#submit-btn");
 const nextBtn = document.querySelector("#next-btn");
 const noAnswer = document.querySelector("#no-answer");
 const questionEl = document.querySelector("#question")
+const questionContainer = document.querySelector("#question-container");
 const currentQuestion = document.querySelector("#current-question");
 const totalQuestions = document.querySelector("#total-questions");
+const scorecardHead = document.querySelector("#scorecard-head");
+const completed = document.querySelector("#completed");
+const scoreEl = document.querySelector("#score");
+const scorecardTotalQuestions = document.querySelector("#scorecard-total-questions");
+const playAgainBtn = document.querySelector("#play-again");
 
 const radios = document.querySelectorAll('input[type="radio"]');
 const answers = document.querySelectorAll(".answer");
@@ -26,10 +32,11 @@ radios.forEach((radio) => {
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    
+    noAnswerSelected()
     checkAnswer(subjectIndex, globalQuestionIndex);
-    noAnswerSelected();
-
+    
+    
+    
 })
 
 nextBtn.addEventListener("click", (e) => {
@@ -40,7 +47,10 @@ nextBtn.addEventListener("click", (e) => {
     console.log("Score: " + score);
     submitBtn.style.display = "block";
     nextBtn.style.display = "none";
+    uncheckRadios()
 })
+
+playAgainBtn.addEventListener("click", playAgain);
 
 htmlSubject.addEventListener("click", () => {
     subjectIndex = 0;
@@ -82,6 +92,7 @@ function noAnswerSelected() {
         } else {
             noAnswer.style.display = "flex";
             return false;
+            
         }
     }   
 }
@@ -104,6 +115,7 @@ async function startGame(subjectIndex) {
     
 
     main.style.display = "none";
+    questionContainer.style.display = "flex";
     subjectHeader.innerHTML = 
     `<div  class="subject-header">
         <img src="${data[subjectIndex].icon}" alt="html icon">
@@ -150,33 +162,64 @@ async function displayData() {
     
 }
 
+function uncheckRadios() {
+    radios.forEach((radio) => {
+        radio.checked = false;
+    })
+}
+
 // finish check answer function
 
 async function checkAnswer(subjectIndex, questionIndex) {
     let data = await fetchData();
     data = data.quizzes;
     globalQuestionIndex++;
-    let val = document.querySelector('input[type="radio"]:checked').value;
-    if (val == data[subjectIndex].questions[questionIndex].answer) {
-        alert("Correct!");
+    if (globalQuestionIndex < data[subjectIndex].questions.length) {
+        let val = document.querySelector('input[type="radio"]:checked').value;
+        if (val == data[subjectIndex].questions[questionIndex].answer) {
+        // alert("Correct!");
         score++;
         
+        
+        } else {
+        // alert("Incorrect!");
+        }
+        submitBtn.style.display = "none";
+        nextBtn.style.display = "block";
+        noAnswer.style.display = "none"
     } else {
-        alert("Incorrect!");
+        gameOver();
     }
-    submitBtn.style.display = "none";
-    nextBtn.style.display = "block";
     
 }
 
 
 
-function gameOver() {
+async function gameOver() {
+    let data = await fetchData();
+    data = data.quizzes;
+
+    questionContainer.style.display = "none";
+    completed.style.display = "flex";
+    scorecardHead.innerHTML = 
+    `<div  class="subject-header">
+        <img src="${data[subjectIndex].icon}" alt="html icon">
+        <h2>${data[subjectIndex].title}</h2>
+    </div>
+    `
+    scoreEl.textContent = score;
+    scorecardTotalQuestions.textContent = data[subjectIndex].questions.length;
+    uncheckRadios()
+    noAnswer.style.display = "none";
 
 }
 
-function resetGame() {
-
+function playAgain() {
+    completed.style.display = "none";
+    main.style.display = "flex"
+    score = 0;
+    globalQuestionIndex = 0;
+    
 }
 
 displayData();
