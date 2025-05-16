@@ -263,7 +263,7 @@ main {
     color: white;
   }
 
-  #submit-btn:hover, #next-btn:hover {
+  #submit-btn:hover, #next-btn:hover, #play-again:hover {
     cursor: pointer;
     opacity: 0.7;
   }
@@ -290,7 +290,11 @@ main {
   #scorecard {
     background-color: var(--white);
     width: 100%;
-    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
   }
 
   /* Typography */
@@ -301,11 +305,21 @@ main {
   }
 
   .lite-h2 {
-    font-weight: 400;
+    font-weight: 300;
+  }
+
+  h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 20px;
   }
 
 #completed h2 {
-  font-size: 50px;
+  font-size: 36px;
+}
+
+#scorecard-head h2 {
+  font-size: 20px;
 }
 
   #header-top {
@@ -321,16 +335,17 @@ main {
     font-weight: 400;
   }
 
- h2 {
-    margin: 0;
-    font-weight: 500;
-    font-size: 20px;
-  }
+ #score {
+  font-size: 72px;
+  margin: 1rem 0 .5rem;
+ }
 
   progress {
     width: 200px;
     accent-color: var(--purple-600);
   }
+
+
 
   /* Images */
 
@@ -338,26 +353,24 @@ main {
     max-width: 100%;
   }
 
-  .subject img, .subject-header img {
+  .html-icon, .css-icon, .javascript-icon, .accessibility-icon {
     border-radius: 8px;
     padding: 5px;
   }
 
-  #html-subject img, #html-header img {
+ .html-icon {
     background-color: var(--orange-50);
   }
 
-
-
-  #css-subject img {
+  .css-icon {
     background-color: var(--green-100);
   }
 
-  #js-subject img {
+.javascript-icon {
     background-color: var(--blue-100);
   }
 
-  #access-subject img {
+  .accessibility-icon {
     background-color: var(--purple-100);
   }
 

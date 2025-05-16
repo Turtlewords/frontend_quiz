@@ -3,6 +3,7 @@ const htmlSubject = document.querySelector("#html-subject");
 const cssSubject = document.querySelector("#css-subject");
 const jsSubject = document.querySelector("#js-subject");
 const accessSubject = document.querySelector("#access-subject");
+const quizProgress = document.querySelector("#quiz-progress");
 const subjectHeader = document.querySelector("#subject-header")
 const submitBtn = document.querySelector("#submit-btn");
 const nextBtn = document.querySelector("#next-btn");
@@ -16,6 +17,7 @@ const completed = document.querySelector("#completed");
 const scoreEl = document.querySelector("#score");
 const scorecardTotalQuestions = document.querySelector("#scorecard-total-questions");
 const playAgainBtn = document.querySelector("#play-again");
+
 
 const radios = document.querySelectorAll('input[type="radio"]');
 const answers = document.querySelectorAll(".answer");
@@ -48,6 +50,7 @@ nextBtn.addEventListener("click", (e) => {
     submitBtn.style.display = "block";
     nextBtn.style.display = "none";
     uncheckRadios()
+    quizProgress.value++;
 })
 
 playAgainBtn.addEventListener("click", playAgain);
@@ -97,15 +100,15 @@ function noAnswerSelected() {
     }   
 }
 
-function initializeHTML() {
+// function initializeHTML() {
     
-    main.style.display = "none";
-    subjectHeader.innerHTML = 
-    `<div id="html-header" class="subject-header">
-        <img src="assets/images/icon-html.svg" alt="html icon">
-        <h2>HTML</h2>
-    </div>`
-}
+//     main.style.display = "none";
+//     subjectHeader.innerHTML = 
+//     `<div id="html-header" class="subject-header">
+//         <img src="assets/images/icon-html.svg" alt="html icon">
+//         <h2>HTML</h2>
+//     </div>`
+// }
 
 
 async function startGame(subjectIndex) {
@@ -118,7 +121,7 @@ async function startGame(subjectIndex) {
     questionContainer.style.display = "flex";
     subjectHeader.innerHTML = 
     `<div  class="subject-header">
-        <img src="${data[subjectIndex].icon}" alt="html icon">
+        <img src="${data[subjectIndex].icon}" alt="${data[subjectIndex].title} icon" class="${data[subjectIndex].title.toLowerCase()}-icon">
         <h2>${data[subjectIndex].title}</h2>
     </div>`
 
@@ -203,7 +206,7 @@ async function gameOver() {
     completed.style.display = "flex";
     scorecardHead.innerHTML = 
     `<div  class="subject-header">
-        <img src="${data[subjectIndex].icon}" alt="html icon">
+        <img src="${data[subjectIndex].icon}" alt="data[subjectIndex].title icon" class="${data[subjectIndex].title.toLowerCase()}-icon">
         <h2>${data[subjectIndex].title}</h2>
     </div>
     `
@@ -211,6 +214,7 @@ async function gameOver() {
     scorecardTotalQuestions.textContent = data[subjectIndex].questions.length;
     uncheckRadios()
     noAnswer.style.display = "none";
+    quizProgress.value = 1;
 
 }
 
