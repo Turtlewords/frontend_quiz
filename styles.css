@@ -227,6 +227,7 @@ main {
     align-items: stretch;
     width: 100%;
     gap: 1rem;
+    
   }
   
   .lbl-btn {
@@ -234,6 +235,7 @@ main {
     padding: .75rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
   }
 
@@ -241,7 +243,20 @@ main {
     outline: 2px solid var(--purple-600);
   }
 
-  
+  .icon-answer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+  }
+
+  .correct-icon {
+    display: none;
+  }
+
+  .incorrect-icon {
+    display: none;
+  }
 
   .question-icon {
     background-color: var(--grey-50);
@@ -275,6 +290,7 @@ main {
   #no-answer {
     color: var(--red-500);
     display: flex;
+    justify-content: center;
     gap: 10px;
     font-size: 18px;
     display: none;
@@ -412,5 +428,17 @@ main {
 
     #main-container {
         justify-content: center;
+    }
+
+    #question-container {
+      flex-direction: row;
+    }
+
+    #answers {
+      width: 50%;
+    }
+
+    #questions-upper {
+      width: 50%;
     }
   }

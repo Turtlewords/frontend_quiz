@@ -50,7 +50,9 @@ nextBtn.addEventListener("click", (e) => {
     submitBtn.style.display = "block";
     nextBtn.style.display = "none";
     uncheckRadios()
+    removeIcons()
     quizProgress.value++;
+    resetBorders()
 })
 
 playAgainBtn.addEventListener("click", playAgain);
@@ -171,6 +173,20 @@ function uncheckRadios() {
     })
 }
 
+function resetBorders() {
+    for (let x of radios) {
+        let parent = x.parentElement;
+            parent.querySelector(".lbl-btn").style.borderColor = "#A729F5"
+    }
+}
+
+function removeIcons() {
+    radios.forEach((radio) => {
+        radio.parentElement.querySelector(".correct-icon").style.display = "none";
+        radio.parentElement.querySelector(".incorrect-icon").style.display = "none";
+    })
+}
+
 // finish check answer function
 
 async function checkAnswer(subjectIndex, questionIndex) {
@@ -182,10 +198,10 @@ async function checkAnswer(subjectIndex, questionIndex) {
         if (val == data[subjectIndex].questions[questionIndex].answer) {
         // alert("Correct!");
         score++;
-        
+        correctAnswer()
         
         } else {
-        // alert("Incorrect!");
+        incorrectAnswer()
         }
         submitBtn.style.display = "none";
         nextBtn.style.display = "block";
@@ -224,6 +240,36 @@ function playAgain() {
     score = 0;
     globalQuestionIndex = 0;
     
+}
+
+function correctAnswer() {
+    for (let x of radios) {
+        if (x.checked) {
+            let parent = x.parentElement;
+            parent.querySelector(".lbl-btn").style.borderColor = "#2FD887"
+            parent.querySelector(".correct-icon").style.display = "block";
+        }
+    }
+}
+
+async function incorrectAnswer() {
+    let data = await fetchData();
+    data = data.quizzes;
+
+    console.log("Answer: " + data[subjectIndex].questions[globalQuestionIndex].answer);
+
+    for (let x of radios) {
+        if (x.checked) {
+            let parent = x.parentElement;
+            parent.querySelector(".lbl-btn").style.borderColor = "#EE5454"
+            parent.querySelector(".incorrect-icon").style.display = "block";
+            console.log("Value: " + x.value)
+        }
+        if (x.value == data[subjectIndex].questions[globalQuestionIndex - 1].answer) {
+            let parent = x.parentElement;
+            parent.querySelector(".correct-icon").style.display = "block";
+        }
+    }
 }
 
 displayData();
