@@ -197,22 +197,10 @@ function noAnswerSelected() {
     }   
 }
 
-// function initializeHTML() {
-    
-//     main.style.display = "none";
-//     subjectHeader.innerHTML = 
-//     `<div id="html-header" class="subject-header">
-//         <img src="assets/images/icon-html.svg" alt="html icon">
-//         <h2>HTML</h2>
-//     </div>`
-// }
-
 
 async function startGame(subjectIndex) {
     let data = await fetchData();
     data = data.quizzes;
-
-    
 
     main.style.display = "none";
     questionContainer.style.display = "flex";
@@ -313,6 +301,7 @@ async function gameOver() {
     let data = await fetchData();
     data = data.quizzes;
 
+    subjectHeader.innerHTML = "";
     questionContainer.style.display = "none";
     completed.style.display = "flex";
     scorecardHead.innerHTML = 
@@ -326,6 +315,7 @@ async function gameOver() {
     uncheckRadios()
     noAnswer.style.display = "none";
     quizProgress.value = 1;
+
 
 }
 
