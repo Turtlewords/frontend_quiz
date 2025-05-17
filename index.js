@@ -17,6 +17,7 @@ const questionContainer = document.querySelector("#question-container");
 const currentQuestion = document.querySelector("#current-question");
 const totalQuestions = document.querySelector("#total-questions");
 const scorecardHead = document.querySelector("#scorecard-head");
+const scorecard = document.querySelector("#scorecard");
 const completed = document.querySelector("#completed");
 const scoreEl = document.querySelector("#score");
 const scorecardTotalQuestions = document.querySelector("#scorecard-total-questions");
@@ -130,10 +131,13 @@ const fetchData = async () => {
 
 function activateDarkMode() {
     darkModeEnabled - true;
+    scorecard.style.color = "white";
+    scorecard.style.backgroundColor = "#313E51"
     body.style.backgroundColor = "#3B4D66"
     body.style.color = "white";
     sunIcon.src = "assets/images/icon-sun-light.svg"
     moonIcon.src = "assets/images/icon-moon-light.svg"
+    
     if (window.innerWidth <= 767) {
         body.style.backgroundImage = "url(assets/images/pattern-background-mobile-dark.svg)";
     } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
@@ -156,6 +160,8 @@ function activateDarkMode() {
 
 function activateLightMode() {
     darkModeEnabled = false;
+    scorecard.style.color = "black";
+    scorecard.style.backgroundColor = "white"
     body.style.backgroundColor = "#F4F6FA"
     body.style.color = "black";
     sunIcon.src = "assets/images/icon-sun-dark.svg"
