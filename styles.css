@@ -55,6 +55,7 @@
 body {
     margin: 0;
     background: var(--grey-50) url("assets/images/pattern-background-mobile-light.svg");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -313,6 +314,8 @@ main {
     padding: 2rem;
   }
 
+  
+
   /* Typography */
 
   h1 {
@@ -415,7 +418,7 @@ main {
   }
 
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1200px) {
 
     body {
         padding: 5vw;

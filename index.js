@@ -1,4 +1,8 @@
 const main = document.querySelector("main");
+const body = document.querySelector("body");
+const darkMode = document.querySelector("#dark-mode");
+const sunIcon = document.querySelector("#sun-icon");
+const moonIcon = document.querySelector("#moon-icon");
 const htmlSubject = document.querySelector("#html-subject");
 const cssSubject = document.querySelector("#css-subject");
 const jsSubject = document.querySelector("#js-subject");
@@ -18,18 +22,29 @@ const scoreEl = document.querySelector("#score");
 const scorecardTotalQuestions = document.querySelector("#scorecard-total-questions");
 const playAgainBtn = document.querySelector("#play-again");
 
-
+const questionIcons = document.querySelectorAll(".question-icon");
+const subjects = document.querySelectorAll(".subject");
+const labels = document.querySelectorAll(".lbl-btn");
 const radios = document.querySelectorAll('input[type="radio"]');
 const answers = document.querySelectorAll(".answer");
 
 let score = 0;
 let globalQuestionIndex = 0;
 let subjectIndex;
+let darkModeEnabled = false;
 
 radios.forEach((radio) => {
     radio.addEventListener("change", () => {
         noAnswer.style.display = "none"
     })
+})
+
+darkMode.addEventListener("change", (e) => {
+    if (e.target.checked) {
+        activateDarkMode()
+    } else {
+        activateLightMode()
+    }
 })
 
 submitBtn.addEventListener("click", (e) => {
@@ -88,6 +103,55 @@ const fetchData = async () => {
     } catch(error) {
         alert(error)
     }
+}
+
+function activateDarkMode() {
+    body.style.backgroundColor = "#3B4D66"
+    body.style.color = "white";
+    sunIcon.src = "assets/images/icon-sun-light.svg"
+    moonIcon.src = "assets/images/icon-moon-light.svg"
+    if (window.innerWidth <= 767) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-mobile-dark.svg)";
+    } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-tablet-dark.svg)"
+    } else {
+        body.style.backgroundImage = "url(assets/images/pattern-background-desktop-dark.svg)"
+    }
+    
+    labels.forEach((label) => {
+        label.style.backgroundColor = "#313E51"
+    })
+    subjects.forEach((subject) => {
+        subject.style.backgroundColor = "#313E51"
+    })
+    questionIcons.forEach((icon) => {
+        icon.style.backgroundColor = "white";
+        icon.style.color = "black";
+    })
+}
+
+function activateLightMode() {
+    body.style.backgroundColor = "#F4F6FA"
+    body.style.color = "black";
+    sunIcon.src = "assets/images/icon-sun-dark.svg"
+    moonIcon.src = "assets/images/icon-moon-dark.svg"
+    if (window.innerWidth <= 767) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-mobile-light.svg)";
+    } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-tablet-light.svg)"
+    } else {
+        body.style.backgroundImage = "url(assets/images/pattern-background-desktop-light.svg)"
+    }
+
+    labels.forEach((label) => {
+        label.style.backgroundColor = "white"
+    })
+    subjects.forEach((subject) => {
+        subject.style.backgroundColor = "white" 
+    })
+    questionIcons.forEach((icon) => {
+        icon.style.backgroundColor = "#F4F6FA";
+    })
 }
 
 function noAnswerSelected() {
@@ -272,4 +336,3 @@ async function incorrectAnswer() {
     }
 }
 
-displayData();
