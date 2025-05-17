@@ -33,6 +33,29 @@ let globalQuestionIndex = 0;
 let subjectIndex;
 let darkModeEnabled = false;
 
+
+window.addEventListener("resize", () => {
+    if (darkModeEnabled == false) {
+    if (window.innerWidth <= 767) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-mobile-light.svg)";
+    } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-tablet-light.svg)"
+    } else {
+        body.style.backgroundImage = "url(assets/images/pattern-background-desktop-light.svg)"
+    }
+} else {
+    if (window.innerWidth <= 767) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-mobile-dark.svg)";
+    } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
+        body.style.backgroundImage = "url(assets/images/pattern-background-tablet-dark.svg)"
+    } else {
+        body.style.backgroundImage = "url(assets/images/pattern-background-desktop-dark.svg)"
+    }
+}
+})
+
+
+
 radios.forEach((radio) => {
     radio.addEventListener("change", () => {
         noAnswer.style.display = "none"
@@ -106,6 +129,7 @@ const fetchData = async () => {
 }
 
 function activateDarkMode() {
+    darkModeEnabled - true;
     body.style.backgroundColor = "#3B4D66"
     body.style.color = "white";
     sunIcon.src = "assets/images/icon-sun-light.svg"
@@ -131,6 +155,7 @@ function activateDarkMode() {
 }
 
 function activateLightMode() {
+    darkModeEnabled = false;
     body.style.backgroundColor = "#F4F6FA"
     body.style.color = "black";
     sunIcon.src = "assets/images/icon-sun-dark.svg"
