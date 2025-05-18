@@ -63,6 +63,33 @@ radios.forEach((radio) => {
     })
 })
 
+labels.forEach((label) => {
+    label.addEventListener("keypress", (e) => {
+        if (e.key == "Enter") {
+            e.preventDefault();
+            label.parentElement.querySelector('input[type="radio"]').click();
+        }
+    })
+})
+
+radios.forEach((radio) => (
+    radio.addEventListener("keypress", (e) => {
+        if (e.key == "Enter") {
+            e.preventDefault();
+            radio.click();
+        }
+    })
+))
+
+subjects.forEach((subject) => {
+    subject.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            subject.click();
+        }
+    })
+})
+
 darkMode.addEventListener("change", (e) => {
     if (e.target.checked) {
         activateDarkMode()
