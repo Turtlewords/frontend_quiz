@@ -137,6 +137,7 @@ function activateDarkMode() {
     body.style.color = "white";
     sunIcon.src = "assets/images/icon-sun-light.svg"
     moonIcon.src = "assets/images/icon-moon-light.svg"
+    noAnswer.style.color = "white";
     
     if (window.innerWidth <= 767) {
         body.style.backgroundImage = "url(assets/images/pattern-background-mobile-dark.svg)";
@@ -166,6 +167,8 @@ function activateLightMode() {
     body.style.color = "black";
     sunIcon.src = "assets/images/icon-sun-dark.svg"
     moonIcon.src = "assets/images/icon-moon-dark.svg"
+    noAnswer.style.color = "#EE5454";
+
     if (window.innerWidth <= 767) {
         body.style.backgroundImage = "url(assets/images/pattern-background-mobile-light.svg)";
     } else if (window.innerWidth > 767 && window.innerWidth < 1200) {
