@@ -4,4 +4,4 @@ This is a web application that tests a users knowledge of several subjects that 
 
 ## Main Menu
 
-[<img src="assets/readme_images/main_menu.png">]
+<img src="assets/readme_images/main_menu.png">
