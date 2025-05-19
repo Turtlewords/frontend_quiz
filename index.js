@@ -100,8 +100,12 @@ darkMode.addEventListener("change", (e) => {
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    noAnswerSelected()
-    checkAnswer(subjectIndex, globalQuestionIndex);
+    if (answerSelected()) {
+        checkAnswer(subjectIndex, globalQuestionIndex);
+    } else {
+        noAnswer.style.display = "flex";
+    }
+    
     
     
     
@@ -110,15 +114,13 @@ submitBtn.addEventListener("click", (e) => {
 nextBtn.addEventListener("click", (e) => {
     e.preventDefault();
     displayQuestion(subjectIndex, globalQuestionIndex);
-    console.log("Subject index: " + subjectIndex);
-    console.log("Question index: " + globalQuestionIndex);
-    console.log("Score: " + score);
     submitBtn.style.display = "block";
     nextBtn.style.display = "none";
-    uncheckRadios()
-    removeIcons()
+    uncheckRadios();
+    removeIcons();
     quizProgress.value++;
-    resetBorders()
+    resetBorders();
+    enableRadios();
 })
 
 playAgainBtn.addEventListener("click", playAgain);
@@ -215,16 +217,13 @@ function activateLightMode() {
     })
 }
 
-function noAnswerSelected() {
+function answerSelected() {
     for (let x of radios) {
         if (x.checked) {
             return true;
-        } else {
-            noAnswer.style.display = "flex";
-            return false;
-            
-        }
+        } 
     }   
+    return false;
 }
 
 
@@ -300,21 +299,22 @@ function removeIcons() {
     })
 }
 
-// finish check answer function
-
 async function checkAnswer(subjectIndex, questionIndex) {
     let data = await fetchData();
     data = data.quizzes;
     globalQuestionIndex++;
     if (globalQuestionIndex < data[subjectIndex].questions.length) {
+        disableRadios();
         let val = document.querySelector('input[type="radio"]:checked').value;
         if (val == data[subjectIndex].questions[questionIndex].answer) {
-        // alert("Correct!");
+       
         score++;
         correctAnswer()
         
+        
         } else {
         incorrectAnswer()
+
         }
         submitBtn.style.display = "none";
         nextBtn.style.display = "block";
@@ -342,10 +342,10 @@ async function gameOver() {
     `
     scoreEl.textContent = score;
     scorecardTotalQuestions.textContent = data[subjectIndex].questions.length;
-    uncheckRadios()
+    uncheckRadios();
     noAnswer.style.display = "none";
     quizProgress.value = 1;
-
+    enableRadios();
 
 }
 
@@ -387,3 +387,14 @@ async function incorrectAnswer() {
     }
 }
 
+function disableRadios() {
+    radios.forEach((radio) => {
+        radio.disabled = true;
+    })
+}
+
+function enableRadios() {
+    radios.forEach((radio) => {
+        radio.disabled = false;
+    })
+}
