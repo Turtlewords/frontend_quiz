@@ -60,6 +60,12 @@ window.addEventListener("resize", () => {
 radios.forEach((radio) => {
     radio.addEventListener("change", () => {
         noAnswer.style.display = "none"
+        for (let x of radios) {
+        if (!x.checked) {
+            x.parentElement.querySelector(".question-icon").style.backgroundColor = "#F4F6FA"
+            x.parentElement.querySelector(".question-icon").style.color = "black";
+        } 
+    }   
     })
 })
 
@@ -71,6 +77,26 @@ labels.forEach((label) => {
         }
     })
 })
+
+labels.forEach((label) => {
+    label.addEventListener("mouseover", () => {
+        label.parentElement.querySelector(".question-icon").style.backgroundColor = "#A729F5"
+        label.parentElement.querySelector(".question-icon").style.color = "white";
+    })
+})
+
+labels.forEach((label) => {
+    label.addEventListener("mouseout", () => {
+        let parent = label.parentElement
+        if (!parent.querySelector("input[type='radio']").checked) {
+            parent.querySelector(".question-icon").style.backgroundColor = "#F4F6FA"
+        parent.querySelector(".question-icon").style.color = "black";
+        }
+        
+    })
+})
+
+
 
 radios.forEach((radio) => (
     radio.addEventListener("keypress", (e) => {
@@ -121,6 +147,7 @@ nextBtn.addEventListener("click", (e) => {
     quizProgress.value++;
     resetBorders();
     enableRadios();
+    clearIconBackground()
 })
 
 playAgainBtn.addEventListener("click", playAgain);
@@ -346,6 +373,7 @@ async function gameOver() {
     noAnswer.style.display = "none";
     quizProgress.value = 1;
     enableRadios();
+    clearIconBackground()
 
 }
 
@@ -363,6 +391,8 @@ function correctAnswer() {
             let parent = x.parentElement;
             parent.querySelector(".lbl-btn").style.borderColor = "#2FD887"
             parent.querySelector(".correct-icon").style.display = "block";
+            parent.querySelector(".question-icon").style.backgroundColor = "#2FD887";
+            parent.querySelector(".question-icon").style.color = "white";
         }
     }
 }
@@ -378,7 +408,8 @@ async function incorrectAnswer() {
             let parent = x.parentElement;
             parent.querySelector(".lbl-btn").style.borderColor = "#EE5454"
             parent.querySelector(".incorrect-icon").style.display = "block";
-            console.log("Value: " + x.value)
+            parent.querySelector(".question-icon").style.backgroundColor = "#EE5454";
+            parent.querySelector(".question-icon").style.color = "white";
         }
         if (x.value == data[subjectIndex].questions[globalQuestionIndex - 1].answer) {
             let parent = x.parentElement;
@@ -396,5 +427,12 @@ function disableRadios() {
 function enableRadios() {
     radios.forEach((radio) => {
         radio.disabled = false;
+    })
+}
+
+function clearIconBackground() {
+    labels.forEach((label) => {
+        label.parentElement.querySelector(".question-icon").style.backgroundColor = "#F4F6FA"
+        label.parentElement.querySelector(".question-icon").style.color = "black";
     })
 }

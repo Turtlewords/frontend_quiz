@@ -98,10 +98,11 @@ main {
   .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
+    /* top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; */
+    inset: 0;
     background-color: var(--purple-600);
     -webkit-transition: .4s;
     transition: .4s;
@@ -223,7 +224,6 @@ main {
 }
 
 
-  
 
   #answers {
     display: flex;
@@ -231,9 +231,19 @@ main {
     align-items: stretch;
     width: 100%;
     gap: 1rem;
-    
+  
   }
   
+  fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
   .lbl-btn {
     border-radius: 16px;
     padding: .75rem;

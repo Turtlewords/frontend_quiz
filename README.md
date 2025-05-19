@@ -40,3 +40,4 @@ From here, the user can select "Play Again" to return to the main menu.
 <img src="assets/readme_images/quiz_dark.png">
 
 At any time, the switch in the upper right hand corner of the screen can be selected to toggle dark or light mode.
+
